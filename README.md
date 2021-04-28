@@ -5,3 +5,4 @@ Learning BlockChain
 - The Blocks
 - Test Driven Development
 - Genesis Block
+- Mine Blocks
