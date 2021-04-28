@@ -8,3 +8,4 @@ Learning BlockChain
 - Mine Blocks
 - The Chain
 - Add Blocks
+- Chain Validations
