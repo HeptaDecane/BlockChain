@@ -40,7 +40,7 @@ describe('Block', () => {
             lastBlock: lastBlock,
             data: data
         })
-        console.log(minedBlock)
+        // console.log(minedBlock)
 
         it('returns a Block instance', () => {
             expect(minedBlock instanceof Block).toBe(true)
