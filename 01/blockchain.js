@@ -20,12 +20,12 @@ class Blockchain {
             return false
 
         for(let i=1; i<chain.length; i++){
-            const {timestamp, data, hash, lastHash} = chain[i]
+            const {timestamp, data, hash, lastHash, nonce, difficulty} = chain[i]
             const previousHash = chain[i-1].hash
             if(lastHash !== previousHash)
                 return false
 
-            const reHash = cryptoHash(timestamp, data, lastHash)
+            const reHash = cryptoHash(timestamp, data, lastHash, nonce, difficulty)
             if(hash !== reHash)
                 return false
         }
