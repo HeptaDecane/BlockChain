@@ -10,3 +10,4 @@ Learning BlockChain
 - Add Blocks
 - Chain Validations
 - Chain Replacement
+- Difficulty & nonce
