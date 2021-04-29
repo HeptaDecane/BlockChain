@@ -9,3 +9,4 @@ Learning BlockChain
 - The Chain
 - Add Blocks
 - Chain Validations
+- Chain Replacement
