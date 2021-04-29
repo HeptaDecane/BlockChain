@@ -27,6 +27,7 @@ describe('Blockchain', ()=>{
 
     describe('isValidChain()', ()=>{
         beforeEach(()=>{
+            blockchain = new Blockchain()
             blockchain.addBlock({data: 'January'})
             blockchain.addBlock({data: 'February'})
             blockchain.addBlock({data: 'March'})
@@ -66,4 +67,49 @@ describe('Blockchain', ()=>{
             })
         })
     })
+
+    describe('replaceChain()', ()=>{
+        let originalChain
+        beforeEach(()=>{
+            blockchain = new Blockchain()
+            originalChain = blockchain.chain
+            blockchain.addBlock({data: 'January'})
+            blockchain.addBlock({data: 'February'})
+        })
+
+        describe('when the new chain is not longer', ()=>{
+            it('does not replaces the chain',()=>{
+                const blockchain1 = new Blockchain()
+                blockchain1.addBlock({data: 'January'})
+
+                blockchain.replaceChain(blockchain1.chain)
+                expect(blockchain.chain).toEqual(originalChain)
+            })
+        })
+
+        describe('when the chain is longer but invalid', ()=>{
+            it('does not replaces the chain',()=>{
+                const blockchain1 = new Blockchain()
+                blockchain1.addBlock({data: 'January'})
+                blockchain1.addBlock({data: 'February'})
+                blockchain1.addBlock({data: 'March'})
+                blockchain1.chain[2].hash = 'mod-hash'
+
+                blockchain.replaceChain(blockchain1.chain)
+                expect(blockchain.chain).toEqual(originalChain)
+            })
+        })
+
+        describe('when the chain is longer and valid', ()=>{
+            it('replaces the chain', ()=>{
+                const blockchain1 = new Blockchain()
+                blockchain1.addBlock({data: 'January'})
+                blockchain1.addBlock({data: 'February'})
+                blockchain1.addBlock({data: 'March'})
+
+                blockchain.replaceChain(blockchain1.chain)
+                expect(blockchain.chain).toEqual(blockchain1.chain)
+            })
+        })
+    });
 })
