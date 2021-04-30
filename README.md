@@ -13,3 +13,4 @@ Learning BlockChain
 - Difficulty & nonce
 - Constant MineRate with Difficulty
 - Improved PoW (Binary Hashes)
+- Jumped Difficulty
