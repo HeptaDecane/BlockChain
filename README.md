@@ -11,3 +11,4 @@ Learning BlockChain
 - Chain Validations
 - Chain Replacement
 - Difficulty & nonce
+- Constant MineRate with Difficulty
