@@ -12,3 +12,4 @@ Learning BlockChain
 - Chain Replacement
 - Difficulty & nonce
 - Constant MineRate with Difficulty
+- Improved PoW (Binary Hashes)
