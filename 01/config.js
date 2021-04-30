@@ -1,5 +1,5 @@
+const MINE_RATE = 1000
 const INITIAL_DIFFICULTY = 3
-
 const GENESIS_DATA = {
     timestamp: 0,
     data: [],
@@ -10,3 +10,4 @@ const GENESIS_DATA = {
 }
 
 exports.GENESIS_DATA = GENESIS_DATA
+exports.MINE_RATE = MINE_RATE
