@@ -1,3 +1,3 @@
 # Solidity
 
-- [First Contract](../solidity/Inbox.sol)
+- [First Contract](Inbox.sol)
