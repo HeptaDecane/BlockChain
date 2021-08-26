@@ -1,1 +1,6 @@
+*.out
+.idea/
+*/.idea/
+out/
+*/out/
 accounts.json
