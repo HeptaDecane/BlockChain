@@ -22,4 +22,4 @@ async function deploy(){
         .send({from: accounts[0]})
     console.log('deployed at: ' + inboxTxn.options.address)
 }
-deploy()
+deploy().then(r=>process.exit(0))
