@@ -3,4 +3,6 @@
 */.idea/
 out/
 */out/
+
 accounts.json
+secrets.js
