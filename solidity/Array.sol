@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.7.6;
 
-contract Arrays{
+contract Array{
     uint256[] public array;
     
     function getArray() public view returns(uint256[] memory){
