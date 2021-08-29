@@ -2,8 +2,10 @@ const HDWalletProvider = require('@truffle/hdwallet-provider')
 const Web3 = require('web3')
 const {abi,bytecode} = require('./compile')
 const {mnemonicPhrase,infuraId} = require('./secrets')
+const util = require("util");
 
-console.log('abi:'+JSON.stringify(abi))
+
+console.log('abi:',util.inspect(abi,false,null))
 
 const provider = new HDWalletProvider({
     mnemonic: {phrase: mnemonicPhrase},
