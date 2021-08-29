@@ -3,6 +3,8 @@ const Web3 = require('web3')
 const {abi,bytecode} = require('./compile')
 const {mnemonicPhrase,infuraId} = require('./secrets')
 
+console.log('abi:', abi)
+
 const provider = new HDWalletProvider({
     mnemonic: {phrase: mnemonicPhrase},
     providerOrUrl: `https://rinkeby.infura.io/v3/${infuraId}`
