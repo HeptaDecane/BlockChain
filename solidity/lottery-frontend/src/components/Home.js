@@ -19,6 +19,9 @@ function Home(){
         Lottery.methods.manager().call().then(setManager)
         Lottery.methods.getPlayers().call().then(setPlayers)
         web3.eth.getBalance(Lottery.options.address).then(setBalance)
+
+        window.ethereum.on('accountsChanged',(accounts)=>setAccount(accounts[0]))
+
     }, [])
 
     const handleInput = (event)=>{
@@ -49,6 +52,17 @@ function Home(){
 
     return(
         <React.Fragment>
+
+            <nav className="navbar navbar-expand-lg navbar-light fixed-top">
+                <div className="container justify-content-end">
+                    <span className="navbar-text">
+                        <i className="fa fa-wallet fa-lg"/>
+                        <span style={{padding:'2px'}}/>
+                        {account.slice(0,6)}...{account.slice(-4)}
+                    </span>
+                </div>
+            </nav>
+
             <div className="container">
                 <h2>LOTTERY CONTRACT</h2>
                 <p>

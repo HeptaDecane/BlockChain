@@ -1,7 +1,7 @@
 body {
   font-family: "Rubik", sans-serif;
   color: #777777;
-  padding: 32px;
+  padding: 64px;
 }
 
 input[type=number]::-webkit-inner-spin-button,
@@ -24,4 +24,15 @@ h4 {
   font-size: 1.2em;
   font-weight: bold;
   color: #000000;
+}
+
+.fixed-top {
+  position:fixed;
+  box-shadow: 0 3px 16px 0 rgba(0,0,0,0.1);
+  top:0;
+  left:0;
+  right:0;
+  width:100%;
+  z-index:99;
+  background:white;
 }
