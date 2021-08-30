@@ -141,6 +141,14 @@ function Home(){
                     <hr/>
                 </React.Fragment>}
 
+                <div className="footer">
+                    Contract deployed at 0xD6D063ca0aCD208B16a5dfBBA417Bc4F74A8c8A8 on Rinkeby Test Network
+                    <span style={{padding:'2px'}}/>
+                    <a href="https://rinkeby.etherscan.io/address/0xD6D063ca0aCD208B16a5dfBBA417Bc4F74A8c8A8">
+                        <i className="fa fa-external-link-alt fa-sm" style={{color:'#aaa'}}/>
+                    </a>
+                </div>
+
             </div>
         </React.Fragment>
     )

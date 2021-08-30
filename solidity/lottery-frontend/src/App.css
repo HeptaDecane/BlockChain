@@ -36,3 +36,9 @@ h4 {
   z-index:99;
   background:white;
 }
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  padding: 4px;
+}
