@@ -22,7 +22,7 @@ function Home(){
 
         window.ethereum.on('accountsChanged',(accounts)=>setAccount(accounts[0]))
 
-    }, [])
+    },[])
 
     const handleInput = (event)=>{
         setInputs({
