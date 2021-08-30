@@ -8,7 +8,10 @@ function Home(){
     const [manager, setManager] = React.useState('')
     const [players, setPlayers] = React.useState([])
     const [balance, setBalance] = React.useState('')
-    const [loading, setLoading] = React.useState(false)
+    const [loaders, setLoaders] = React.useState({
+        enter: false,
+        pickWinner: false
+    })
     const [inputs, setInputs] = React.useState({
         ether: '0.01'
     })
@@ -32,7 +35,10 @@ function Home(){
     }
     const handleSubmit = (event)=>{
         event.preventDefault()
-        setLoading(true)
+        setLoaders({
+            ...loaders,
+            enter: true
+        })
 
         Lottery.methods.enter().send({
             from: account,
@@ -41,14 +47,52 @@ function Home(){
         .then(res=>{
             console.log(res)
             alert(`You are Entered!\nTxn Hash: ${res.transactionHash}`)
-            setLoading(false)
+            setLoaders({
+                ...loaders,
+                enter: false
+            })
         })
         .catch(err=> {
             console.log(err)
             alert(err.message)
-            setLoading(false)
+            setLoaders({
+                ...loaders,
+                enter: false
+            })
         })
     }
+
+    const pickWinner = ()=>{
+        setLoaders({
+            ...loaders,
+            pickWinner: true
+        })
+
+        Lottery.methods.pickWinner().send({from:account})
+            .then(res=>{
+                console.log(res)
+                setLoaders({
+                    ...loaders,
+                    pickWinner: false
+                })
+                getLastWinner()
+            })
+            .catch(err=>{
+                console.log(err)
+                alert(err.message)
+                setLoaders({
+                    ...loaders,
+                    pickWinner: false
+                })
+            })
+
+        const getLastWinner = () => {
+          Lottery.methods.lastWinner().call()
+              .then(res=>alert(`winner: ${res}`))
+              .catch(console.log)
+        }
+    }
+
 
     return(
         <React.Fragment>
@@ -72,11 +116,12 @@ function Home(){
                 </p>
 
                 <hr/>
+
                 <form>
                     <h4>Want to try your luck?</h4>
                     <div>
-                        <label htmlFor={"ether"}>Amount of ether to enter: </label>
-                        <input type={"number"} name={"ether"}
+                        <label htmlFor={"ether"}>Amount of ether to enter:</label>
+                        <input type={"number"} name={"ether"} style={{margin: '8px'}}
                                value={inputs.ether}
                                onChange={handleInput}
                         />
@@ -84,8 +129,17 @@ function Home(){
                     <button type={"submit"} onClick={handleSubmit}>
                         Enter!
                     </button>
-                    {loading && <i className="fa fa-spinner fa-spin fa-lg" style={{color:'#aaa'}}/>}
+                    {loaders.enter && <i className="fa fa-spinner fa-spin fa-lg" style={{color:'#aaa'}}/>}
                 </form>
+
+                <hr/>
+
+                {(account && account===manager) && <React.Fragment>
+                    <h4>Ready to pick a winner?</h4>
+                    <button onClick={pickWinner}>pick a winner!</button>
+                    {loaders.pickWinner && <i className="fa fa-spinner fa-spin fa-lg" style={{color:'#aaa'}}/>}
+                    <hr/>
+                </React.Fragment>}
 
             </div>
         </React.Fragment>
