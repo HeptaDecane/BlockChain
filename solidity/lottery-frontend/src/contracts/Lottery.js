@@ -1,6 +1,6 @@
 import web3 from "../web3";
 
-const address = '0x1119eA37F43b3C4d795e3Dcd4B47E40D99ea65ec'
+const address = '0xe36333EFe14d6D78AA8EB56b545330C02e8B0708'
 
 const abi = [
     { inputs: [], stateMutability: 'nonpayable', type: 'constructor' },
@@ -22,6 +22,13 @@ const abi = [
         inputs: [],
         name: 'getPlayers',
         outputs: [ { internalType: 'address[]', name: '', type: 'address[]' } ],
+        stateMutability: 'view',
+        type: 'function'
+    },
+    {
+        inputs: [],
+        name: 'lastWinner',
+        outputs: [ { internalType: 'address', name: '', type: 'address' } ],
         stateMutability: 'view',
         type: 'function'
     },
