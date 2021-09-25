@@ -4,7 +4,14 @@ export const GlobalContext = React.createContext()
 
 export function GlobalProvider(props){
 
-    let store = {}
+    const [account,setAccount] = React.useState('')
+    const [currentPage,setCurrentPage] = React.useState('home')
+    let store = {
+        account: account,
+        setAccount: setAccount,
+        currentPage: currentPage,
+        setCurrentPage: setCurrentPage
+    }
 
     return (
         <GlobalContext.Provider value={store}>
