@@ -2,15 +2,15 @@
 pragma solidity ^0.8.7;
 
 contract Factory{
-    address[] deployedContracts;
+    address[] deployedCampaigns;
     
     function createCampaign(uint256 _minimumContribution) public {
         address newCampaign = address(new Campaign(_minimumContribution, msg.sender));
-        deployedContracts.push(newCampaign);
+        deployedCampaigns.push(newCampaign);
     }
     
-    function getDeployedContracts() public view returns (address[] memory){
-        return deployedContracts;
+    function getDeployedCampaigns() public view returns (address[] memory){
+        return deployedCampaigns;
     }
 }
 
