@@ -1,5 +1,4 @@
 const Web3 = require('web3');
-const assert = require('assert');
 const campaignInterface = require('../build/Campaign.json');
 const factoryInterface = require('../build/Factory.json');
 
