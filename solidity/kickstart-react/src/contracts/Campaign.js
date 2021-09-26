@@ -1,2 +1,8 @@
+import web3 from "../web3";
+import campaignInterface from './Campaign.json'
 
-const address = '0xeBd4bdD294BFfF8df988046250A3c937b5347B20'
+function Campaign(address){
+    return new web3.eth.Contract(campaignInterface.abi,address)
+}
+
+export default Campaign;
