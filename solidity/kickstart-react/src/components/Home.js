@@ -1,5 +1,5 @@
 import React from "react";
-import Factory from "../contracts/Factory";
+import factory from "../contracts/Factory";
 import {Link} from "react-router-dom";
 import {GlobalContext} from "../GlobalContext";
 
@@ -9,7 +9,7 @@ function Home(){
 
     React.useEffect(()=>{
         setCurrentPage('home')
-        Factory.methods.getDeployedCampaigns().call()
+        factory.methods.getDeployedCampaigns().call()
             .then(setCampaigns).catch(console.log)
     },[])
 
@@ -21,7 +21,9 @@ function Home(){
                     <div className="card" key={i}>
                         <div className="card-body">
                             <h5 className="card-title">{element}</h5>
-                            <a href="#" className="card-link">View Campaign</a>
+                            <Link to={`/campaigns/${element}`} className="card-link">
+                                View Campaign
+                            </Link>
                         </div>
                     </div>
                 )}

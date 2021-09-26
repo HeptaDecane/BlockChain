@@ -24,12 +24,19 @@ h4 {
 }
 
 .card{
-  margin: 0.5rem;
+  margin: 1%;
 }
 
-.navbar {
-  padding-left: 10%;
-  padding-right: 10%;
+.navbar-brand {
+  font-weight: bold;
+}
+
+.card-link {
+  text-decoration: none;
+}
+
+.caption {
+  font-size: 0.8em;
 }
 
 .fixed-top {
@@ -39,7 +46,7 @@ h4 {
   left:0;
   right:0;
   width:100%;
-  z-index:99;
+  z-index:10;
   background:white;
 }
 

@@ -1,7 +1,8 @@
 import React from "react";
-import Factory from "../contracts/Factory";
+import factory from "../contracts/Factory";
 import {GlobalContext} from "../GlobalContext";
 import web3 from "../web3";
+import {useHistory} from "react-router-dom";
 
 function CreateCampaign(){
     const {account} = React.useContext(GlobalContext)
@@ -13,6 +14,8 @@ function CreateCampaign(){
     const [inputs, setInputs] = React.useState({
         ether: '0.01'
     })
+
+    const history = useHistory()
 
     React.useEffect(()=>{
         setCurrentPage('createCampaign')
@@ -32,9 +35,22 @@ function CreateCampaign(){
             creation: true
         })
 
-        Factory.methods.createCampaign(web3.utils.toWei(inputs.ether,'ether'))
+        let message = document.getElementById("message")
+        message.classList.remove('alert-danger')
+        message.classList.remove('alert-success')
+        message.innerHTML = ""
+
+        factory.methods.createCampaign(web3.utils.toWei(inputs.ether,'ether'))
             .send({from: account})
-            .then(console.log).catch(console.log)
+            .then(res=>{
+                message.classList.add('alert-success')
+                message.innerHTML = `Contract Created! Txn Hash: ${res.transactionHash}`
+                history.push('/')
+            })
+            .catch(err=>{
+                message.classList.add('alert-danger')
+                message.innerHTML = err.message
+            })
             .finally(()=>{
                 setLoaders({
                     ...loaders,
@@ -56,13 +72,17 @@ function CreateCampaign(){
                                onChange={handleInput}
                         />
                     </div>
-                    <button type={"submit"} className="btn btn-primary" onClick={handleSubmit}>
+                    <button type={"submit"} className="btn btn-primary"
+                            disabled={loaders.creation} onClick={handleSubmit}
+                    >
                         Create!
                     </button>
                     <span style={{margin:'0.5rem'}}>
                         {loaders.creation && <i className="fa fa-spinner fa-spin fa-lg"/>}
                     </span>
                 </form>
+                <hr/>
+                <div className="alert" role="alert" id="message"/>
             </div>
         </React.Fragment>
     )
